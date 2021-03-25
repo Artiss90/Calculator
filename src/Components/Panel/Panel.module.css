@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.operator {
+  border: 1px solid orange;
+}
+.equally {
+  width: calc((100% - 10px) / 2);
+  background: orange;
+}
+.AC {
+  background: gray;
+}

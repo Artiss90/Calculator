@@ -1,22 +1,21 @@
 import React from 'react';
 import style from './Display.module.css';
 
-function Display() {
-  const value = 5;
-  const result = 0;
+function Display({ value, result = 0, onChangeValue }) {
   return (
-    <div>
+    <div className={style.display}>
       <input
-        type="number"
         name="value"
         value={value}
         className={style.input}
+        onChange={onChangeValue}
+        autoComplete="off"
       ></input>
       <input
-        type="number"
         name="result"
         value={result}
-        className={style.input}
+        className={style.output}
+        readOnly
       ></input>
     </div>
   );
