@@ -2,21 +2,27 @@ import React from 'react';
 import style from './Button.module.css';
 import csn from 'classnames';
 
-function Button({ value, className = null }) {
-  // console.log(`style.${className}`);
+function Button({ children, className = null, value, onClick }) {
+  // * миксуем стили
   const btnStyle = csn({
     [style.button]: true,
     [className]: className && true,
   });
-  console.log(btnStyle);
+
+  const btnOnClick = value => {
+    // console.log(value)
+    // TODO проверяем есть ли значение
+    if (value || value === 0) {
+      onClick(value);
+      return;
+    }
+    console.log('нет значения');
+    return;
+  };
+
   return (
-    <button
-      className={btnStyle}
-      onClick={() => {
-        return;
-      }}
-    >
-      {value}
+    <button className={btnStyle} onClick={() => btnOnClick(value)}>
+      {children}
     </button>
   );
 }
