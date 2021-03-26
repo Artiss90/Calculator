@@ -118,7 +118,8 @@ function App() {
       return;
     }
     if (valueBtn === 'MR') {
-      setValue(memory);
+      setOperator(false);
+      setValue(value + memory);
       return;
     }
     // TODO добавление точки
