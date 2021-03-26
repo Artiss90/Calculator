@@ -64,6 +64,15 @@ function Panel({ onClick }) {
       <Button value={0} onClick={onClick}>
         0
       </Button>
+      <Button value="M+" className={style.operator} onClick={onClick}>
+        M+
+      </Button>
+      <Button value="M-" className={style.operator} onClick={onClick}>
+        M-
+      </Button>
+      <Button value="MR" className={style.operator} onClick={onClick}>
+        MR
+      </Button>
       <Button value="=" className={style.equally} onClick={onClick}>
         =
       </Button>
