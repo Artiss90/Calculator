@@ -11,7 +11,6 @@ function App() {
     const calc = function (string) {
       if (string.includes('+')) {
         const arrNum = string.split('+');
-        console.log(arrNum);
         return arrNum.reduce((arr, item) => Number(arr) + Number(item), 0);
       }
       if (string.includes('-')) {
@@ -24,7 +23,6 @@ function App() {
       }
       if (string.includes('/')) {
         const arrNum = string.split('/');
-        console.log(arrNum);
         return arrNum.reduce((arr, item) => Number(arr) / Number(item));
       }
     };
@@ -36,8 +34,6 @@ function App() {
   const onClick = valueBtn => {
     // ? присылаемое значение является числом
     if (typeof valueBtn === 'number') {
-      console.log(typeof valueBtn);
-      console.log(valueBtn.toString());
       // *если значение 0 перезапишем, а не добавляем
       Number(value) !== 0
         ? setValue(value + valueBtn.toString())
