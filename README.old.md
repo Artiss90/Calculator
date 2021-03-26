@@ -1,2 +1,0 @@
-# calculator
-калькулятор (calculator)
