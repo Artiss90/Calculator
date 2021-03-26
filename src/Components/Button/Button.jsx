@@ -10,7 +10,6 @@ function Button({ children, className = null, value, onClick }) {
   });
 
   const btnOnClick = value => {
-    // console.log(value)
     // TODO проверяем есть ли значение
     if (value || value === 0) {
       onClick(value);
