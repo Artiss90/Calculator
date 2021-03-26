@@ -36,7 +36,7 @@ function App() {
       }
       if (string.includes('/')) {
         if (string.includes('/0')) {
-          return 'деление на ноль!';
+          return setResult('деление на ноль!');
         }
         const arrNum = string.split('/');
         return arrNum.reduce(
