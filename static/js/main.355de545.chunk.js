@@ -1,2 +1,0 @@
-(this.webpackJsonpcalculator=this.webpackJsonpcalculator||[]).push([[0],{11:function(c,n,t){"use strict";t.r(n);var e=t(1),r=t.n(e),a=t(3),o=t.n(a),i=(t(9),t(4)),s=t.n(i),l=t(0);var u=function(){return Object(l.jsx)("div",{className:s.a.container,children:Object(l.jsx)("h1",{children:"calculator"})})};o.a.render(Object(l.jsx)(r.a.StrictMode,{children:Object(l.jsx)(u,{})}),document.getElementById("root"))},4:function(c,n,t){c.exports={container:"App_container__3LsBH"}},9:function(c,n,t){}},[[11,1,2]]]);
-//# sourceMappingURL=main.355de545.chunk.js.map
