@@ -16,10 +16,10 @@ function Panel({ onClick }) {
           />
         </svg>
       </Button>
-      <Button value="%" onClick={onClick}>
+      <Button value=" % " onClick={onClick}>
         %
       </Button>
-      <Button value="/" className={style.operator} onClick={onClick}>
+      <Button value=" / " className={style.operator} onClick={onClick}>
         /
       </Button>
       <Button value={7} onClick={onClick}>
@@ -31,7 +31,7 @@ function Panel({ onClick }) {
       <Button value={9} onClick={onClick}>
         9
       </Button>
-      <Button value="*" className={style.operator} onClick={onClick}>
+      <Button value=" * " className={style.operator} onClick={onClick}>
         *
       </Button>
       <Button value={4} onClick={onClick}>
@@ -43,7 +43,7 @@ function Panel({ onClick }) {
       <Button value={6} onClick={onClick}>
         6
       </Button>
-      <Button value="-" className={style.operator} onClick={onClick}>
+      <Button value=" - " className={style.operator} onClick={onClick}>
         -
       </Button>
       <Button value={1} onClick={onClick}>
@@ -55,7 +55,7 @@ function Panel({ onClick }) {
       <Button value={3} onClick={onClick}>
         3
       </Button>
-      <Button value="+" className={style.operator} onClick={onClick}>
+      <Button value=" + " className={style.operator} onClick={onClick}>
         +
       </Button>
       <Button value="." onClick={onClick}>

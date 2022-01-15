@@ -11,39 +11,69 @@ function App() {
 
   useEffect(() => {
     const calc = function (string) {
+      console.log('🚀 ~ file: App.jsx ~ line 15 ~ calc ~ string', string);
       if (typeof string === 'number') {
         // ? если вместо строки числовое значение - преображаем в строку
         string = string.toString();
       }
-      if (string.includes('+')) {
-        const arrNum = string.split('+');
-        return arrNum.reduce(
-          (arr, item) => Number.parseFloat(arr) + Number.parseFloat(item),
-          0,
+      let elements = string.split(' ');
+
+      const pastResult = (start, num, count = 3) => {
+        elements.splice(start, count, num);
+      };
+      const multiply = index => {
+        console.log('🚀 ~ file: App.jsx ~ line 26 ~ multiply ~ index', index);
+        console.log(
+          '🚀 ~ file: App.jsx ~ line 28 ~ multiply ~ elements',
+          elements,
         );
+        const result =
+          Number(elements[index - 1]) * Number(elements[index + 1]);
+        pastResult(index - 1, result);
+      };
+      const divided = index => {
+        const result =
+          Number(elements[index - 1]) / Number(elements[index + 1]);
+        pastResult(index - 1, result);
+      };
+      const plus = index => {
+        const result =
+          Number(elements[index - 1]) + Number(elements[index + 1]);
+        pastResult(index - 1, result);
+      };
+      const minus = index => {
+        const result =
+          Number(elements[index - 1]) - Number(elements[index + 1]);
+        pastResult(index - 1, result);
+      };
+
+      if (!elements) {
+        return;
       }
-      if (string.includes('-')) {
-        const arrNum = string.split('-');
-        return arrNum.reduce(
-          (arr, item) => Number.parseFloat(arr) - Number.parseFloat(item),
-        );
-      }
-      if (string.includes('*')) {
-        const arrNum = string.split('*');
-        return arrNum.reduce(
-          (arr, item) => Number.parseFloat(arr) * Number.parseFloat(item),
-        );
-      }
-      if (string.includes('/')) {
-        if (string.includes('/0')) {
-          return setResult('деление на ноль!');
+
+      if (elements.indexOf('*') !== -1 || elements.indexOf('/') !== -1) {
+        if (elements.indexOf('/') > elements.indexOf('*')) {
+          divided(elements.indexOf('/'));
+          return calc(elements.join(' '));
         }
-        const arrNum = string.split('/');
-        return arrNum.reduce(
-          (arr, item) => Number.parseFloat(arr) / Number.parseFloat(item),
-        );
+        if (elements.indexOf('*') > elements.indexOf('/')) {
+          multiply(elements.indexOf('*'));
+          return calc(elements.join(' '));
+        }
       }
-      return string;
+      if (elements.indexOf('+') !== -1 || elements.indexOf('-') !== -1) {
+        if (elements.indexOf('-') > elements.indexOf('+')) {
+          minus(elements.indexOf('-'));
+          return calc(elements.join(' '));
+        }
+        if (elements.indexOf('+') > elements.indexOf('-')) {
+          plus(elements.indexOf('+'));
+          return calc(elements.join(' '));
+        }
+      }
+      if (elements.length === 1) {
+        return Number(elements[0]);
+      }
     };
     const result = () => calc(value);
     // ? если выражение заканчивается оператором - калькуляцию не проводим, так как в массиве будет пустой объект
@@ -69,22 +99,22 @@ function App() {
       return;
     }
     // ? присылаемое значение является оператором
-    if (valueBtn === '+') {
+    if (valueBtn === ' + ') {
       setOperator(true);
       setValue(value + valueBtn);
       return;
     }
-    if (valueBtn === '-') {
+    if (valueBtn === ' - ') {
       setOperator(true);
       setValue(value + valueBtn);
       return;
     }
-    if (valueBtn === '*') {
+    if (valueBtn === ' * ') {
       setOperator(true);
       setValue(value + valueBtn);
       return;
     }
-    if (valueBtn === '/') {
+    if (valueBtn === ' / ') {
       setOperator(true);
       setValue(value + valueBtn);
       return;
@@ -102,7 +132,7 @@ function App() {
     // TODO удаление последнего елемента
     if (valueBtn === 'delete') {
       if (value.length > 1) {
-        setValue(value.slice(0, -1));
+        setValue(value.trim().slice(0, -1).trim());
         return;
       }
       setValue(0);
@@ -119,12 +149,16 @@ function App() {
     }
     if (valueBtn === 'MR') {
       setOperator(false);
+      if (value === 0) {
+        setValue(memory);
+        return;
+      }
       setValue(value + memory);
       return;
     }
     // TODO добавление точки
     if (valueBtn === '.') {
-      setValue(value + valueBtn);
+      setValue(value + valueBtn.toString());
       return;
     }
     console.log('нераспознанный оператор');
