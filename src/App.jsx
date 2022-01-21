@@ -22,28 +22,27 @@ function App() {
         elements.splice(start, count, num);
       };
       const multiply = index => {
-        console.log('🚀 ~ file: App.jsx ~ line 26 ~ multiply ~ index', index);
-        console.log(
-          '🚀 ~ file: App.jsx ~ line 28 ~ multiply ~ elements',
-          elements,
-        );
-        const result =
-          Number(elements[index - 1]) * Number(elements[index + 1]);
+        const result = (
+          Number(elements[index - 1]) * Number(elements[index + 1])
+        ).toFixed(10);
         pastResult(index - 1, result);
       };
       const divided = index => {
-        const result =
-          Number(elements[index - 1]) / Number(elements[index + 1]);
+        const result = (
+          Number(elements[index - 1]) / Number(elements[index + 1])
+        ).toFixed(10);
         pastResult(index - 1, result);
       };
       const plus = index => {
-        const result =
-          Number(elements[index - 1]) + Number(elements[index + 1]);
+        const result = (
+          Number(elements[index - 1]) + Number(elements[index + 1])
+        ).toFixed(10);
         pastResult(index - 1, result);
       };
       const minus = index => {
-        const result =
-          Number(elements[index - 1]) - Number(elements[index + 1]);
+        const result = (
+          Number(elements[index - 1]) - Number(elements[index + 1])
+        ).toFixed(10);
         pastResult(index - 1, result);
       };
 
@@ -89,12 +88,17 @@ function App() {
   }, [value, operator]);
 
   const onClick = valueBtn => {
+    const indexLastNum = value.toString().split(' ').length - 1;
+    const lastNum = value.toString().split(' ')[indexLastNum];
     // ? присылаемое значение является числом
     if (typeof valueBtn === 'number') {
       // *если значение 0 перезапишем, а не добавляем
-      Number(value) !== 0
-        ? setValue(value + valueBtn.toString())
-        : setValue(valueBtn);
+      // Number(value) !== 0
+      //   ? setValue(value + valueBtn.toString())
+      //   : setValue(valueBtn);
+      lastNum === 0 || lastNum === '0'
+        ? setValue(valueBtn)
+        : setValue(value + valueBtn.toString());
       setOperator(false);
       return;
     }
@@ -158,6 +162,9 @@ function App() {
     }
     // TODO добавление точки
     if (valueBtn === '.') {
+      if (lastNum.includes('.')) {
+        return;
+      } // * если в последнем числе уже есть точка - вторую не ставим
       setValue(value + valueBtn.toString());
       return;
     }
