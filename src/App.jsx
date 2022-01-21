@@ -49,26 +49,45 @@ function App() {
       if (!elements) {
         return;
       }
-
-      if (elements.indexOf('*') !== -1 || elements.indexOf('/') !== -1) {
-        if (elements.indexOf('/') > elements.indexOf('*')) {
+      // ? сначала идут операции деления и умножения
+      if (elements.indexOf('*') !== -1 && elements.indexOf('/') !== -1) {
+        // ? если присутствуют оба оператора смотрим который идет первым
+        if (elements.indexOf('/') < elements.indexOf('*')) {
           divided(elements.indexOf('/'));
           return calc(elements.join(' '));
         }
-        if (elements.indexOf('*') > elements.indexOf('/')) {
+        if (elements.indexOf('*') < elements.indexOf('/')) {
           multiply(elements.indexOf('*'));
           return calc(elements.join(' '));
         }
       }
-      if (elements.indexOf('+') !== -1 || elements.indexOf('-') !== -1) {
-        if (elements.indexOf('-') > elements.indexOf('+')) {
+      if (elements.indexOf('*') !== -1) {
+        multiply(elements.indexOf('*'));
+        return calc(elements.join(' '));
+      }
+      if (elements.indexOf('/') !== -1) {
+        divided(elements.indexOf('/'));
+        return calc(elements.join(' '));
+      }
+      // ? операции сложения и отнимания выполняются только после деления и умножения
+      if (elements.indexOf('+') !== -1 && elements.indexOf('-') !== -1) {
+        // ? если присутствуют оба оператора смотрим который идет первым
+        if (elements.indexOf('-') < elements.indexOf('+')) {
           minus(elements.indexOf('-'));
           return calc(elements.join(' '));
         }
-        if (elements.indexOf('+') > elements.indexOf('-')) {
+        if (elements.indexOf('+') < elements.indexOf('-')) {
           plus(elements.indexOf('+'));
           return calc(elements.join(' '));
         }
+      }
+      if (elements.indexOf('-') !== -1) {
+        minus(elements.indexOf('-'));
+        return calc(elements.join(' '));
+      }
+      if (elements.indexOf('+') !== -1) {
+        plus(elements.indexOf('+'));
+        return calc(elements.join(' '));
       }
       if (elements.length === 1) {
         return Number(elements[0]);
