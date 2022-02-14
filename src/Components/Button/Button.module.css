@@ -7,6 +7,11 @@
   border: 1px solid black;
   border-radius: 5px;
 }
+
 .button:nth-child(4n + 1) {
   margin-left: 0;
+}
+
+.button:active {
+  background-color: aqua;
 }

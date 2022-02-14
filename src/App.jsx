@@ -133,22 +133,22 @@ function App() {
       return;
     }
     // ? присылаемое значение является оператором
-    if (valueBtn === ' + ') {
+    if (valueBtn === ' + ' && operator === false) {
       setOperator(true);
       setValue(value + valueBtn);
       return;
     }
-    if (valueBtn === ' - ') {
+    if (valueBtn === ' - ' && operator === false) {
       setOperator(true);
       setValue(value + valueBtn);
       return;
     }
-    if (valueBtn === ' * ') {
+    if (valueBtn === ' * ' && operator === false) {
       setOperator(true);
       setValue(value + valueBtn);
       return;
     }
-    if (valueBtn === ' / ') {
+    if (valueBtn === ' / ' && operator === false) {
       setOperator(true);
       setValue(value + valueBtn);
       return;
@@ -157,14 +157,17 @@ function App() {
     if (valueBtn === 'AC') {
       setValue(0);
       setResult(0);
+      setOperator(false);
       return;
     }
     if (valueBtn === '=') {
       setValue(result);
+      setOperator(false);
       return;
     }
     // TODO удаление последнего елемента
     if (valueBtn === 'delete') {
+      setOperator(false);
       if (value.length <= 1 || typeof value === 'number') {
         setValue(0);
         return;
