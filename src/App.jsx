@@ -10,13 +10,16 @@ function App() {
   const [operator, setOperator] = useState(false);
 
   useEffect(() => {
-    const calc = function (string) {
-      console.log('🚀 ~ file: App.jsx ~ line 15 ~ calc ~ string', string);
-      if (typeof string === 'number') {
+    const calc = function (dataByCalc) {
+      console.log(
+        '🚀 ~ file: App.jsx ~ line 15 ~ calc ~ dataByCalc',
+        dataByCalc,
+      );
+      if (typeof dataByCalc === 'number') {
         // ? если вместо строки числовое значение - преображаем в строку
-        string = string.toString();
+        dataByCalc = dataByCalc.toString();
       }
-      let elements = string.split(' ');
+      let elements = dataByCalc.split(' ');
 
       const pastResult = (start, num, count = 3) => {
         elements.splice(start, count, num);
@@ -110,11 +113,19 @@ function App() {
     const indexLastNum = value.toString().split(' ').length - 1;
     const lastNum = value.toString().split(' ')[indexLastNum];
     // ? присылаемое значение является числом
-    if (typeof valueBtn === 'number') {
+    if (
+      valueBtn === '1' ||
+      valueBtn === '2' ||
+      valueBtn === '3' ||
+      valueBtn === '4' ||
+      valueBtn === '5' ||
+      valueBtn === '6' ||
+      valueBtn === '7' ||
+      valueBtn === '8' ||
+      valueBtn === '9' ||
+      valueBtn === '0'
+    ) {
       // *если значение 0 перезапишем, а не добавляем
-      // Number(value) !== 0
-      //   ? setValue(value + valueBtn.toString())
-      //   : setValue(valueBtn);
       lastNum === 0 || lastNum === '0'
         ? setValue(valueBtn)
         : setValue(value + valueBtn.toString());
@@ -154,11 +165,15 @@ function App() {
     }
     // TODO удаление последнего елемента
     if (valueBtn === 'delete') {
-      if (value.length > 1) {
-        setValue(value.trim().slice(0, -1).trim());
+      if (value.length <= 1 || typeof value === 'number') {
+        setValue(0);
         return;
       }
-      setValue(0);
+      const elements = value.split(' ');
+      const lengthEl = elements.length;
+      elements.length = lengthEl - 1;
+      const valueWithoutLastEl = elements.join(' ');
+      setValue(valueWithoutLastEl);
       return;
     }
     // TODO добавлениеб удаление и чтение с памяти

@@ -22,37 +22,37 @@ function Panel({ onClick }) {
       <Button value=" / " className={style.operator} onClick={onClick}>
         /
       </Button>
-      <Button value={7} onClick={onClick}>
+      <Button value="7" onClick={onClick}>
         7
       </Button>
-      <Button value={8} onClick={onClick}>
+      <Button value="8" onClick={onClick}>
         8
       </Button>
-      <Button value={9} onClick={onClick}>
+      <Button value="9" onClick={onClick}>
         9
       </Button>
       <Button value=" * " className={style.operator} onClick={onClick}>
         *
       </Button>
-      <Button value={4} onClick={onClick}>
+      <Button value="4" onClick={onClick}>
         4
       </Button>
-      <Button value={5} onClick={onClick}>
+      <Button value="5" onClick={onClick}>
         5
       </Button>
-      <Button value={6} onClick={onClick}>
+      <Button value="6" onClick={onClick}>
         6
       </Button>
       <Button value=" - " className={style.operator} onClick={onClick}>
         -
       </Button>
-      <Button value={1} onClick={onClick}>
+      <Button value="1" onClick={onClick}>
         1
       </Button>
-      <Button value={2} onClick={onClick}>
+      <Button value="2" onClick={onClick}>
         2
       </Button>
-      <Button value={3} onClick={onClick}>
+      <Button value="3" onClick={onClick}>
         3
       </Button>
       <Button value=" + " className={style.operator} onClick={onClick}>
@@ -61,7 +61,7 @@ function Panel({ onClick }) {
       <Button value="." onClick={onClick}>
         .
       </Button>
-      <Button value={0} onClick={onClick}>
+      <Button value="0" onClick={onClick}>
         0
       </Button>
       <Button value="M+" className={style.operator} onClick={onClick}>
